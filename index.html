@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign On - Wells Fargo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="wf-header">
+        <div class="logo-text">WELLS FARGO</div>
+        <!-- Toggle function added -->
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars" id="menu-icon"></i>
+        </button>
+    </header>
+
+    <!-- Hidden Menu -->
+    <div id="mobile-menu">
+        <div class="menu-list">
+            <a href="#"><i class="fas fa-search"></i> Search</a>
+            <a href="#"><i class="fas fa-lock"></i> Enroll</a>
+            <a href="#">Customer Service</a>
+            <a href="#">ATMs/Locations</a>
+            <a href="#">Español</a>
+            <a href="#" onclick="toggleMenu()">Close Menu</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <h1 id="greeting">Good morning</h1>
+
+        <form id="loginForm">
+            <!-- ID updated to 'username' to match your JS preference -->
+            <div class="input-group">
+                <input type="text" id="username" class="rounded-input" placeholder="Username" required>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" class="rounded-input" placeholder="Password" required>
+            </div>
+
+            <div class="options">
+                <input type="checkbox" id="save-user"> 
+                <label for="save-user">Save username</label>
+            </div>
+
+            <button type="submit" class="sign-on-btn">Sign on</button>
+
+            <div class="or-text">or</div>
+
+            <button type="button" class="passkey-btn">
+                <i class="fas fa-user-check"></i> Use a passkey
+            </button>
+
+            <a href="#" class="forgot-link">Forgot username or password?</a>
+        </form>
+
+        <div class="disclaimer-box">
+            <h4>Investment and Insurance Products are:</h4>
+            <ul>
+                <li>Not Insured by the FDIC or Any Federal Government Agency</li>
+                <li>Not a Deposit or Other Obligation of, or Guaranteed by, the Bank or Any Bank Affiliate</li>
+                <li>Subject to Investment Risks, Including Possible Loss of the Principal Amount Invested</li>
+            </ul>
+        </div>
+
+        <div class="bottom-links">
+            <a href="#">About Wells Fargo</a>
+            <a href="#">Report Email Fraud</a>
+            <a href="#">Security Center</a>
+            <a href="#">Privacy, Cookies, Security & Legal</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

